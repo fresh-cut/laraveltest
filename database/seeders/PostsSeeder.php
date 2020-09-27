@@ -21,7 +21,8 @@ class PostsSeeder extends Seeder
         [
             'title'=>Str::random(10),
             'bodytext'=>Str::random(50),
-            'created_at'=>now()
+            'created_at'=>now(),
+            'updated_at'=>now()
         ]
         );
         }

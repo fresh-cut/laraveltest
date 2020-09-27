@@ -16,7 +16,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Posts::all();
-        return view('posts.postsindex', ['posts' => $posts]);
+        return view('posts.index', compact('posts'));
     }
     /**
      * Show the form for creating a new resource.
@@ -25,7 +25,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -34,9 +34,12 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Posts $post)
     {
-        //
+        $post->title=$request->title;
+        $post->bodytext=$request->bodytext;
+        $post->save();
+        return redirect('/posts');
     }
 
     /**
@@ -48,7 +51,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post= Posts::where('id', $id)->first();
-        return view('posts.show', ['post'=>$post] );
+        return view('posts.show', compact('post') );
     }
 
     /**
@@ -78,7 +81,7 @@ class PostsController extends Controller
         $post->title=$request->title;
         $post->bodytext=$request->bodytext;
         $post->save();
-        return $this->index();
+        return redirect('/posts');
     }
 
     /**
@@ -89,6 +92,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Posts::find($id);
+        $post->delete();
+        return redirect('/posts');
     }
 }
