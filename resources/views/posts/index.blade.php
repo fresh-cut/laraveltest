@@ -27,8 +27,16 @@
                     <td><?=$post['title']?></td>
                     <td>
                         <a href="posts/{{$post['id']}} " class="btn btn-info">show</a>
+                    </td>
+                    <td>
                         <a href="posts/{{$post['id']}}/edit" class="btn btn-warning">edit</a>
-                        <a href="posts/{{}}" class="btn btn-danger">delete</a>
+                    </td>
+                    <td>
+                        <form action="/posts/{{$post['id']}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </td>
 
                 </tr>
