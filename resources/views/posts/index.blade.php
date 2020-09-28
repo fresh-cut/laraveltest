@@ -1,43 +1,51 @@
     <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta charset="UTF-8">
     <title>Notebook</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-3 sidebar">
+            <ul class="sidebar-menu list-unstyled">
+                <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#1">1</a></li>
+                <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#2">2</a></li>
+                <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#3">3</a></li>
+            </ul>
+        </div>
+        <div class="col-9">
             <h1>All tasks</h1>
             <a href="/posts/create" class="btn btn-success">Add tasks</a>
             <br><br>
-            <table align="left" style="width:61%" class="table">
+            <table class="table">
                 <thead>
-                <tr >
-                    <th style="text-align: center" width="5%" >ID</th>
-                    <th style="text-align: center" width="50%">TITLE</th>
-                    <th style="text-align: center" colspan="3" width="6%">ACTION</th>
+                <tr style="text-align: center">
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th colspan="3">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($posts as $post):?>
                 <tr>
-                    <td align="center"><?=$post['id']?></td>
-                    <td><?=$post['title']?></td>
-                    <td width="2%">
+                    <td align="center" width="5%"><?=$post['id']?></td>
+                    <td ><?=$post['title']?></td>
+                    <td width="5%">
                         <a href="posts/{{$post['id']}} " class="btn btn-info">show</a>
-                    </td >
-                    <td width="2%">
+                    </td>
+                    <td width="5%">
                         <a href="posts/{{$post['id']}}/edit" class="btn btn-warning">edit</a>
                     </td>
-                    <td width="2%">
+                    <td width="5%">
                         <form action="/posts/{{$post['id']}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
+
                 </tr>
                 <?php endforeach;?>
                 </tbody>
@@ -45,5 +53,6 @@
         </div>
     </div>
 </div>
+<script scr="asset('js/app.js')"></script>
 </body>
 </html>

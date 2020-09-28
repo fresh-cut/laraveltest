@@ -77,7 +77,6 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $post=Posts::find($id);
-       // var_dump($post->title,$request->title, $request->bodytext );die;
         $post->title=$request->title;
         $post->bodytext=$request->bodytext;
         $post->save();
