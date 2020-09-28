@@ -12,33 +12,32 @@
             <h1>All tasks</h1>
             <a href="/posts/create" class="btn btn-success">Add tasks</a>
             <br><br>
-            <table class="table">
+            <table align="left" style="width:61%" class="table">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>TITLE</th>
-                    <th>ACTION</th>
+                <tr >
+                    <th style="text-align: center" width="5%" >ID</th>
+                    <th style="text-align: center" width="50%">TITLE</th>
+                    <th style="text-align: center" colspan="3" width="6%">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($posts as $post):?>
                 <tr>
-                    <td><?=$post['id']?></td>
+                    <td align="center"><?=$post['id']?></td>
                     <td><?=$post['title']?></td>
-                    <td>
+                    <td width="2%">
                         <a href="posts/{{$post['id']}} " class="btn btn-info">show</a>
-                    </td>
-                    <td>
+                    </td >
+                    <td width="2%">
                         <a href="posts/{{$post['id']}}/edit" class="btn btn-warning">edit</a>
                     </td>
-                    <td>
+                    <td width="2%">
                         <form action="/posts/{{$post['id']}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </td>
-
                 </tr>
                 <?php endforeach;?>
                 </tbody>
