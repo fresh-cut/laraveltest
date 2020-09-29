@@ -92,6 +92,6 @@ class PostsController extends Controller
     public function destroy($id)
     {
         Posts::destroy($id);
-        return redirect('/posts');
+        return redirect()->route('posts.index');
     }
 }
