@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta charset="UTF-8">
     <title>Notebook</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <body>
 <div class="container-fluid">
@@ -24,25 +25,21 @@
                 <tr style="text-align: center">
                     <th>ID</th>
                     <th>TITLE</th>
-                    <th colspan="3">ACTION</th>
+                    <th>ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($posts as $post):?>
                 <tr>
-                    <td align="center" width="5%"><?=$post['id']?></td>
+                    <td align="center" width="5%">{{$post['id']}}</td>
                     <td ><?=$post['title']?></td>
-                    <td width="5%">
-                        <a href="posts/{{$post['id']}} " class="btn btn-info">show</a>
-                    </td>
-                    <td width="5%">
-                        <a href="posts/{{$post['id']}}/edit" class="btn btn-warning">edit</a>
-                    </td>
-                    <td width="5%">
+                    <td class="d-flex justify-content-center align-items-center">
+                        <a href="posts/{{$post['id']}} "><i class="far fa-eye p-0 mr-1"></i></a>
+                        <a href="posts/{{$post['id']}}/edit"><i class="fas fa-pencil-alt p-0 mx-1"></i></a>
                         <form action="/posts/{{$post['id']}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-link p-0 ml-1" type="submit"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
 
