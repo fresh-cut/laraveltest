@@ -31,7 +31,7 @@
                 <tbody>
                 <?php foreach($posts as $post):?>
                 <tr>
-                    <td align="center" width="5%"><?=$post['id']?></td>
+                    <td align="center" width="5%">{{$post['id']}}</td>
                     <td ><?=$post['title']?></td>
                     <td class="d-flex justify-content-center align-items-center">
                         <a href="posts/{{$post['id']}} "><i class="far fa-eye p-0 mr-1"></i></a>
